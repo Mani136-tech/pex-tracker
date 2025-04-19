@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Pex Tracker</title>
+  <style>
+    body {
+      background-color: #f3f6f4;
+      font-family: 'Segoe UI', sans-serif;
+      color: #2e2e2e;
+      padding: 20px;
+    }
+    h1 {
+      text-align: center;
+      color: #1a5e3a;
+    }
+    #taskInput {
+      width: 70%;
+      padding: 10px;
+      margin-right: 10px;
+      border: 1px solid #ccc;
+      border-radius: 12px;
+    }
+    #addBtn {
+      padding: 10px 15px;
+      background-color: #4caf50;
+      color: white;
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+    }
+    ul {
+      list-style: none;
+      padding: 0;
+    }
+    li {
+      background-color: #fff;
+      margin: 10px 0;
+      padding: 10px;
+      border-radius: 10px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      display: flex;
+      justify-content: space-between;
+    }
+    .complete {
+      text-decoration: line-through;
+      color: gray;
+    }
+    .doneBtn {
+      background-color: #2196f3;
+      border: none;
+      padding: 5px 10px;
+      border-radius: 8px;
+      color: white;
+      cursor: pointe;;
+    }
+  </style>
+</head>
+<body>
+  <h1>Pex Tracker</h1>
+  <div style="text-align:center;">
+    <input type="text" id="taskInput" placeholder="Enter your study task...">
+    <button id="addBtn">Add</button>
+  </div>
+  <ul id="taskList"></ul>
+
+  <script>
+    const input = document.getElementById('taskInput');
+    const btn = document.getElementById('addBtn');
+    const list = document.getElementById('taskList');
+
+    btn.onclick = () => {
+      const task = input.value.trim();
+      if (task) {
+        const li = document.createElement('li');
+        li.innerHTML = `${task} <button class="doneBtn">Done</button>`;
+        list.appendChild(li);
+        input.value = '';
+        
+        li.querySelector('.doneBtn').onclick = () => {
+          li.classList.toggle('complete');
+        };
+      }
+    };
+  </script>
+</body>
+</html>
+0
+0
